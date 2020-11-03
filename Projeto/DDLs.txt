@@ -1,0 +1,52 @@
+create table login(
+	idUser serial primary key,
+	username varchar(20) not null,
+	email varchar(80) not null,
+	password varchar(50) not null
+);
+
+create table userinfo(
+	idUser integer not null,
+	nome varchar(100) not null,
+	cpf varchar(25) not null,
+	telefone varchar(20) not null,
+	endereco varchar(150) not null,
+	foto_perfil bytea,
+	foreign key (idUser) references login(idUser)
+);
+
+create table follow(
+	idFollow serial primary key,
+	idUser integer not null,
+	idFollower integer not null,
+	foreign key (idUser) references login(idUser),
+	foreign key (idFollower) references login(idUser)
+);
+
+create table post(
+	idPost serial primary key,
+	conteudo text not null,
+	datetime date not null,
+	idUser integer not null,
+	foreign key (idUser) references login(idUser)
+);
+
+create table pescado(
+	idPescado serial primary key,
+	massa real,
+	tamanho real,
+	foto bytea,
+	qtd integer not null,
+	idPost integer not null,
+	foreign key (idPost) references post(idPost)
+);
+
+create table pescaria(
+	idPescaria serial primary key,
+	endereco varchar(150) not null,
+	datetime date,
+	idPost integer not null,
+	idFollow integer,
+	foreign key (idPost) references post(idPost),
+	foreign key (idFollow) references follow(idFollow)
+);

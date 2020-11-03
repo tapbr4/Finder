@@ -1,0 +1,17 @@
+insert into login(username,email,password)
+values('teste','teste@finder.com','teste');
+
+insert into userinfo(idUser,nome,cpf,telefone,endereco)
+values('1','Teste da Silva','123.456.789-10','(00) 0000-0000','Rua Zero');
+
+insert into post(conteudo,datetime,iduser)
+values('Mais uma pescaria concluída.','03/11/2020',1);
+
+insert into pescado(massa,tamanho,qtd,idpost)
+values(1.5,39,1,x);
+
+insert into post(conteudo,datetime,iduser)
+values('Pescaria na sexta-feria, pessoal!','03/11/2020',3);
+
+insert into pescaria(endereco,datetime,idpost)
+values('Lagoa da Pesca','2020-11-06',5);
